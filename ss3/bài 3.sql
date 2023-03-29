@@ -3,7 +3,7 @@ create database `library`;
 use `library`;
 create table category(
 	id int primary key auto_increment,
-    name varchar(45) null
+    name varchar(45)not null
 );
 INSERT INTO authors(name)
 VALUES ('Tự nhiên');
@@ -17,7 +17,7 @@ INSERT INTO authors(name)
 VALUES ('Khác');
 create table authors(
 	id int primary key auto_increment,
-    name varchar(45) null
+    name varchar(45) not null
 );
 INSERT INTO category(name)
 VALUES ('Nguyễn Thái Học');
@@ -31,9 +31,9 @@ INSERT INTO category(name)
 VALUES ('Hà Văn Minh');
 create table students(
 	id int primary key auto_increment,
-    name varchar(45) null,
-    birthday varchar(45) null,
-    class_name varchar(45) null
+    name varchar(45) not null,
+    birthday varchar(45) not null,
+    class_name varchar(45) not null
 );
 INSERT INTO students(name,birthday,class_name)
 VALUES ('Nguyễn Văn A','12/12/1999','C0822G1');
@@ -47,8 +47,8 @@ INSERT INTO students(name,birthday,class_name)
 VALUES ('Nguyễn Văn E','12/16/1999','C1022G1');
 create table books(
 	id int primary key auto_increment,
-    name varchar(45) null,
-    page_size int null,
+    name varchar(45) not null,
+    page_size int not null,
     author_id int,
     category_id int,
     FOREIGN KEY (author_id) REFERENCES authors(id),
@@ -64,13 +64,13 @@ INSERT INTO books(name,page_size,author_id,category_id)
 VALUES ('Địa',76,4,2);
 INSERT INTO books(name,page_size,author_id,category_id)
 VALUES ('Hóa',32,5,1);
-drop table books;
+-- drop table books;
 create table borrows(
 	id int primary key auto_increment,
     student_id int,
     book_id int,
-    borrow_date varchar(45) null,
-    return_date varchar(45) null,
+    borrow_date varchar(45) not null,
+    return_date varchar(45) not null,
     FOREIGN KEY (student_id) REFERENCES students(id),
     FOREIGN KEY (book_id) REFERENCES books(id)
 );
@@ -102,10 +102,11 @@ INNER JOIN authors ON books.author_id = authors.id;
 -- Lấy ra danh sách các học viên đã từng mượn sách và sắp xếp danh sách theo theo tên từ a->z
 SELECT students.name,students.birthday,students.class_name
 from borrows
-inner join students on borrows.student_id = students.id;
+inner join students on borrows.student_id = students.id
+order by students.name;
 
 -- Lấy ra  2 quyển sách được mượn nhiều nhất
-SELECT books.name, COUNT(book_id) as lan_muon
+SELECT books.name, COUNT(borrows_id) as lan_muon
 FROM borrows 
 inner join books on borrows.book_id = books.id
 group by book_id

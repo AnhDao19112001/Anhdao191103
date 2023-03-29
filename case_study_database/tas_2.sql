@@ -2,7 +2,8 @@ use case_study_database;
 -- task2
 select ma_nhan_vien, ho_ten
 from nhan_vien
-where ho_ten regexp '^[HTK]' and char_length(ho_ten) <= 15;
+where ho_ten regexp '^[HTK]' and char_length(ho_ten) <= 15; 
+
 
 -- task3
 select ma_khach_hang, ho_ten
