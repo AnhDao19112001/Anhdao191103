@@ -100,10 +100,14 @@ INNER JOIN category ON books.category_id = category.id
 INNER JOIN authors ON books.author_id = authors.id;
 
 -- Lấy ra danh sách các học viên đã từng mượn sách và sắp xếp danh sách theo theo tên từ a->z
-SELECT students.name,students.birthday,students.class_name
-from borrows
-inner join students on borrows.student_id = students.id
-order by students.name;
+-- SELECT students.name,students.birthday,students.class_name
+-- from borrows
+-- inner join students on borrows.student_id = students.id
+-- order by students.name;
+select students.name, students.birthday, students.class_name
+from students
+where student_id in (select student_id from borrows)
+order by student_id;
 
 -- Lấy ra  2 quyển sách được mượn nhiều nhất
 SELECT books.name, COUNT(borrows_id) as lan_muon
