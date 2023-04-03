@@ -87,6 +87,8 @@ select ma_khach_hang from xoa_khach_hang
 select * from xoa_khach_hang;
 drop view xoa_khach_hang;
 
+-- cách 3 sử dụng on delete, cách 4 check (không khả thi).
+
 -- task 19
 update dich_vu_di_kem set gia = gia * 2 where ma_dich_vu_di_kem in(
 select * 
