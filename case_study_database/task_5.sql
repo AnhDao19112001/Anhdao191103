@@ -41,12 +41,28 @@ from ( select kh.ma_khach_hang, sum(ifnull(dv.chi_phi_thue,0) + ifnull(hdct.so_l
 );
 
 -- task 18
-update khach_hang set is_delete = 1 where ma_khach_hang in(
-select ma_khach_hang 
-from hop_dong
-where year(ngay_lam_hop_dong) < 2021
-);
-select * from khach_hang where is_delete = 1;
+-- update khach_hang set is_delete = 1 where ma_khach_hang in(
+-- select ma_khach_hang 
+-- from hop_dong
+-- where year(ngay_lam_hop_dong) < 2021
+-- );
+-- select * from khach_hang where is_delete = 1;
+
+create view xoa_khach_hang as
+select ma_khach_hang from khach_hang
+where ma_khach_hang in (select kh.ma_khach_hang from khach_hang as kh
+join hop_dong as hd on kh.ma_khach_hang = hd.ma_khach_hang and year(hd.ngay_lam_hop_dong)<2021);
+delete from hop_dong_chi_tiet as hdct
+
+where hdct.ma_hop_dong_chi_tiet in (select ma_hop_dong_chi_tiet from hop_dong_chi_tiet as hdct
+join hop_dong as hd on hdct.ma_hop_dong_chi_tiet);
+delete from hop_dong as hd
+where hd.ma_khach_hang in (select ma_khach_hang from xoa_khach_hang);
+delete from khach_hang as kh
+where hd.ma_khach_hang in (select ma_khach_hang from xoa_khach_hang);
+
+select * from xoa_khach_hang;
+drop view xoa_khach_hang;
 
 -- task 19
 update dich_vu_di_kem set gia = gia * 2 where ma_dich_vu_di_kem in(
@@ -64,6 +80,6 @@ select * from dich_vu_di_kem;
 -- task 20
 select ma_khach_hang as id, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi, is_delete
 from khach_hang
-union
+union all
 select ma_khach_hang as id, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi, is_delete
 from khach_hang;
