@@ -56,11 +56,34 @@ delete from hop_dong_chi_tiet as hdct
 
 where hdct.ma_hop_dong_chi_tiet in (select ma_hop_dong_chi_tiet from hop_dong_chi_tiet as hdct
 join hop_dong as hd on hdct.ma_hop_dong_chi_tiet);
+delete from hop_dong_chi_tiet as hd
+where hd.ma_khach_hang in (select ma_khach_hang from xoa_khach_hang);
+delete from hop_dong_chi_tiet hdct where
+hdct.ma_hop_dong_chi_tiet in
+(
+	select * from (
+select hdct.ma_hop_dong_chi_tiet from hop_dong_chi_tiet as hdct
+where hdct.ma_hop_dong in (
+select hd.ma_hop_dong from hop_dong as hd
+where hd.ma_khach_hang in (
+select ma_khach_hang from xoa_khach_hang
+)
+)    
+    ) abc
+);
 delete from hop_dong as hd
-where hd.ma_khach_hang in (select ma_khach_hang from xoa_khach_hang);
+where hd.ma_khach_hang in (
+select * from (
+select ma_khach_hang from xoa_khach_hang
+) abc
+);
 delete from khach_hang as kh
-where hd.ma_khach_hang in (select ma_khach_hang from xoa_khach_hang);
+where kh.ma_khach_hang in (
+select * from (
+select ma_khach_hang from xoa_khach_hang
+) abc
 
+);
 select * from xoa_khach_hang;
 drop view xoa_khach_hang;
 
