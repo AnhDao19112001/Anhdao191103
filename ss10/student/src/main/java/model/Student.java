@@ -29,7 +29,7 @@ public class Student {
     }
 
     public void setTen_hoc_vien(String ten_hoc_vien) {
-        this.ten_hoc_vien = ten_hoc_vien;
+        this.ten_hoc_vien=ten_hoc_vien;
     }
 
     public int getGioi_tinh() {

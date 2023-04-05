@@ -1,55 +1,72 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: anhda
+  Date: 4/5/2023
+  Time: 10:31 AM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
 <div>---DANH SÁCH HỌC VIÊN TRUNG TÂM CODEGYM---</div>
 <p class="text-center text-danger p">${massage}</p>
 <table class="table">
-    <thead>
-    <tr class="tr">
-        <th style="width: 12%;">MÃ HỌC VIÊN:</th>
-        <th>TÊN HỌC VIÊN:</th>
-        <th>GIỚI TÍNH:</th>
-        <th>ĐIỂM:</th>
+  <thead>
+  <tr class="tr">
+    <th style="width: 12%;">MÃ HỌC VIÊN:</th>
+    <th>TÊN HỌC VIÊN:</th>
+    <th>GIỚI TÍNH:</th>
+    <th>ĐIỂM:</th>
+  </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${studentList}" var="a" varStatus="loop">
+    <tr>
+      <td>${loop.count}</td>
+      <td>${a.ten_hoc_vien}</td>
+      <td>
+        <c:if test="${a.gioi_tinh == 0}">Nam</c:if>
+        <c:if test="${a.gioi_tinh == 1}">Nữ</c:if>
+      </td>
+      <td>
+        <c:choose>
+          <c:when test="${a.diem >= 9}">Giỏi</c:when>
+          <c:when test="${a.diem >= 8}">Khá</c:when>
+          <c:when test="${a.diem >= 6}">Trung bình</c:when>
+          <c:when test="${a.diem < 6}">Yếu</c:when>
+          <c:otherwise>
+            Danh sách rỗng
+          </c:otherwise>
+        </c:choose>
+      </td>
     </tr>
-    </thead>
-    <tbody>
-    <c:forEach item="${list}" var="a" varStatus="loop">
-        <tr>
-            <td>${loop.count}</td>
-            <td>${a.name}</td>
-            <td>
-                <c:if test="${a.gioiTinh == 0}">Nam</c:if>
-                <c:if test="${a.gioiTinh == 1}">Nữ</c:if>
-            </td>
-            <td>
-                <c:choose>
-                    <c:when test="${a.diem >= 90}">Giỏi</c:when>
-                    <c:when test="${a.diem >= 80}">Khá</c:when>
-                    <c:when test="${a.diem >= 60}">Trung bình</c:when>
-                    <c:when test="${a.diem < 60}">Yếu</c:when>
-                    <c:otherwise>
-                        Danh sách rỗng
-                    </c:otherwise>
-                </c:choose>
-            </td>
-        </tr>
 
-    </c:forEach>
-    </tbody>
+  </c:forEach>
+  </tbody>
 </table>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
 </html>
