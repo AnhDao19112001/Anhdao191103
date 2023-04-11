@@ -10,17 +10,18 @@ public class BookService implements IBookService{
     IBookRepository iBookRepository = new BookRepository();
     @Override
     public List<Booking> findAll() {
-        return iBookRepository.findAll();
+        return iBookRepository.fillAll();
     }
 
     @Override
-    public Booking findByTitle(String title) {
-        return iBookRepository.findByTitle(title);
+    public Booking findById(int id) {
+        return iBookRepository.findById(id);
     }
 
+
     @Override
-    public void create(Booking booking) {
-        iBookRepository.create(booking);
+    public void save(Booking booking) {
+        iBookRepository.save(booking);
     }
 
     @Override
@@ -29,7 +30,7 @@ public class BookService implements IBookService{
     }
 
     @Override
-    public void delete(int id) {
-        iBookRepository.delete(id);
+    public void remove(int id) {
+        iBookRepository.remove(id);
     }
 }

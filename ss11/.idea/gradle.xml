@@ -5,11 +5,11 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/student" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/book_management" />
         <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/student" />
+            <option value="$PROJECT_DIR$/book_management" />
           </set>
         </option>
       </GradleProjectSettings>

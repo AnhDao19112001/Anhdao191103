@@ -6,47 +6,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookRepository implements IBookRepository{
-    static List<Booking> bookingList = new ArrayList<>();
+    private static List<Booking> bookList;
     static {
-        bookingList.add(new Booking(1,"DevUp",203,"Nguyễn Hiền","IT"));
-        bookingList.add(new Booking(2,"Ông lão đánh cá và con cá xấu",5,"Tự chế","Cảm lạnh"));
-        bookingList.add(new Booking(3,"Tuổi thơ dữ dội",203,"Phùng Quán","Chiến Tranh"));
-        bookingList.add(new Booking(4,"Cánh cửa thép bị mở toang",203,"Không nhớ","Chiến sự"));
+        bookList = new ArrayList<>();
+        bookList.add(new Booking());
+        bookList.add(new Booking());
+        bookList.add(new Booking());
+        bookList.add(new Booking());
+        bookList.add(new Booking());
     }
     @Override
-    public List<Booking> findAll() {
-        return bookingList;
+    public List<Booking> fillAll() {
+        return bookList;
     }
 
     @Override
-    public Booking findByTitle(String title) {
-        for (Booking book: bookingList) {
-            if (title == book.getTitle()){
-                return book;
+    public void save(Booking book) {
+        bookList.add(book);
+    }
+
+    @Override
+    public Booking findById(int id) {
+        for (Booking a: bookList
+        ) {
+            if (a.getId() == id){
+                return a;
             }
         }
         return null;
     }
 
     @Override
-    public void create(Booking booking) {
-        bookingList.add(booking);
-    }
-
-    @Override
-    public void update(int id, Booking booking) {
-        for (int i = 0; i < bookingList.size(); i++) {
-            if (bookingList.get(i).getId()==id){
-                bookingList.set(i,booking);
+    public void update(int id, Booking book) {
+        for (int i = 0; i < bookList.size(); i++) {
+            if (bookList.get(i).getId() == id) {
+                bookList.set(i, book);
             }
         }
     }
 
     @Override
-    public void delete(int id) {
-        for (int i = 0; i < bookingList.size(); i++) {
-            if (id==bookingList.get(i).getId()){
-                bookingList.remove(i);
+    public void remove(int id) {
+        for (Booking a: bookList
+        ) {
+            if (a.getId() == id){
+                bookList.remove(a);
+                break;
             }
         }
     }

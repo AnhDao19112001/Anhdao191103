@@ -41,9 +41,7 @@ b_id int not null auto_increment primary key,
 b_name varchar (50) not null,
 b_page_size int not null,
 b_author_id int not null,
-b_category_id int not null,
-foreign key(b_author_id) references authors(b_author_id),
-foreign key(b_category_id) references category(b_category_id)
+b_category_id int not null
 );
 insert into books(b_name,b_page_size,b_author_id,b_category_id) values
 ('Toán',45,1,1),
@@ -57,9 +55,7 @@ id int not null auto_increment primary key,
 student_id int not null,
 book_id int not null,
 borrow_date date,
-return_date date,
-foreign key(student_id) references student(student_id),
-foreign key(book_id) references books(book_id)
+return_date date
 );
 insert into borrows(student_id,book_id,borrow_date,return_date) values
 (1,1,'2022-12-12','2022-12-13'),

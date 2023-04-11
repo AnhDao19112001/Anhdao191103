@@ -5,9 +5,9 @@ import model.Booking;
 import java.util.List;
 
 public interface IBookRepository {
-    List<Booking> findAll();
-    Booking findByTitle(String title);
-    void create(Booking booking);
-    void update(int id, Booking booking);
-    void delete(int id);
+    List<Booking> fillAll();
+    void save(Booking book);
+    Booking findById(int id);
+    void update(int id, Booking book);
+    void remove(int id);
 }
