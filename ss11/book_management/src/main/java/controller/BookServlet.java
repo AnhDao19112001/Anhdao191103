@@ -133,7 +133,7 @@ public class BookServlet extends HttpServlet {
             book.setAuthor(author);
             book.setCategory(category);
             this.bookService.update(id, book);
-            request.setAttribute("customer", book);
+            request.setAttribute("book", book);
             request.setAttribute("message", "Book information was updated");
             dispatcher = request.getRequestDispatcher("update.jsp");
         }

@@ -35,17 +35,17 @@
   <c:forEach items="${studentList}" var="a" varStatus="loop">
     <tr>
       <td>${loop.count}</td>
-      <td>${a.ten_hoc_vien}</td>
+      <td>${a.name}</td>
       <td>
-        <c:if test="${a.gioi_tinh == 0}">Nam</c:if>
-        <c:if test="${a.gioi_tinh == 1}">Nữ</c:if>
+        <c:if test="${a.gender == 0}">Nam</c:if>
+        <c:if test="${a.gender == 1}">Nữ</c:if>
       </td>
       <td>
         <c:choose>
-          <c:when test="${a.diem >= 9}">Giỏi</c:when>
-          <c:when test="${a.diem >= 8}">Khá</c:when>
-          <c:when test="${a.diem >= 6}">Trung bình</c:when>
-          <c:when test="${a.diem < 6}">Yếu</c:when>
+          <c:when test="${a.score >= 9}">Giỏi</c:when>
+          <c:when test="${a.score >= 8}">Khá</c:when>
+          <c:when test="${a.score >= 6}">Trung bình</c:when>
+          <c:when test="${a.score < 6}">Yếu</c:when>
           <c:otherwise>
             Danh sách rỗng
           </c:otherwise>

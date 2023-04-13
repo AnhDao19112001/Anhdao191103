@@ -9,11 +9,11 @@ public class BookRepository implements IBookRepository{
     private static List<Booking> bookList;
     static {
         bookList = new ArrayList<>();
-        bookList.add(new Booking());
-        bookList.add(new Booking());
-        bookList.add(new Booking());
-        bookList.add(new Booking());
-        bookList.add(new Booking());
+        bookList.add(new Booking(1,"Ông lão đánh cá và con cá xấu",5,"tự chế","Hài"));
+        bookList.add(new Booking(2,"Tặng",1,"Anh Đào","Thơ"));
+        bookList.add(new Booking(3,"Nhớ",1,"Anh Đào","Thơ"));
+        bookList.add(new Booking(4,"Tội yêu người",1,"Anh Đào","Thơ"));
+        bookList.add(new Booking(5,"Cái gì ta để lại",1,"Anh Đào","Thơ"));
     }
     @Override
     public List<Booking> fillAll() {

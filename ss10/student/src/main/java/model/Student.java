@@ -1,50 +1,56 @@
 package model;
 
 public class Student {
-    private int ma_hoc_vien;
-    private String ten_hoc_vien;
-    private int gioi_tinh;
-    private double diem;
+    private int id;
+    private String name;
+    private int gender;
+    private double score;
 
     public Student() {
     }
 
-    public Student(int ma_hoc_vien, String ten_hoc_vien, int gioi_tinh, double diem) {
-        this.ma_hoc_vien = ma_hoc_vien;
-        this.ten_hoc_vien = ten_hoc_vien;
-        this.gioi_tinh = gioi_tinh;
-        this.diem = diem;
+    public Student(int id, String name, int gender, double score) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.score = score;
     }
 
-    public int getMa_hoc_vien() {
-        return ma_hoc_vien;
+    public Student(String name, int gender, double score) {
+        this.name = name;
+        this.gender = gender;
+        this.score = score;
     }
 
-    public void setMa_hoc_vien(int ma_hoc_vien) {
-        this.ma_hoc_vien = ma_hoc_vien;
+    public int getId() {
+        return id;
     }
 
-    public String getTen_hoc_vien() {
-        return ten_hoc_vien;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTen_hoc_vien(String ten_hoc_vien) {
-        this.ten_hoc_vien=ten_hoc_vien;
+    public String getName() {
+        return name;
     }
 
-    public int getGioi_tinh() {
-        return gioi_tinh;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setGioi_tinh(int gioi_tinh) {
-        this.gioi_tinh = gioi_tinh;
+    public int getGender() {
+        return gender;
     }
 
-    public double getDiem() {
-        return diem;
+    public void setGender(int gender) {
+        this.gender = gender;
     }
 
-    public void setDiem(double diem) {
-        this.diem = diem;
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
     }
 }
