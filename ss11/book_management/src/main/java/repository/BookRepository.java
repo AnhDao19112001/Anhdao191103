@@ -27,13 +27,14 @@ public class BookRepository implements IBookRepository{
 
     @Override
     public Booking findById(int id) {
-        for (Booking a: bookList
-        ) {
-            if (a.getId() == id){
-                return a;
-            }
-        }
-        return null;
+//        for (Booking a: bookList
+//        ) {
+//            if (a.getId() == id){
+//                return a;
+//            }
+//        }
+//        return null;
+        return bookList.get(id);
     }
 
     @Override

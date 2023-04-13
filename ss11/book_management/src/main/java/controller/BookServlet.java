@@ -26,11 +26,6 @@ public class BookServlet extends HttpServlet {
             case "delete":
                 showDeleteBook(request,response);
                 break;
-            case "update":
-                showUpdateBook(request,response);
-                break;
-            case "add":
-                break;
             case "edit":
                 showEditBook(request,response);
                 break;
@@ -48,9 +43,6 @@ public class BookServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void showUpdateBook(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("update.jsp");
-    }
 
     private void showDeleteBook(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
