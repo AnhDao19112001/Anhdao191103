@@ -69,7 +69,7 @@ public class BookingServlet extends HttpServlet {
     }
 
     private void listBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Booking> books = iBookingService.fillAll();
+        List<Booking> books = iBookingService.fillAll(getServletName());
         request.setAttribute("books", books);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
@@ -102,7 +102,7 @@ public class BookingServlet extends HttpServlet {
         if (book == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
-            this.iBookingService.remove(id);
+            this.iBookingService.remove(book);
             try {
                 response.sendRedirect("/book");
             } catch (IOException e) {

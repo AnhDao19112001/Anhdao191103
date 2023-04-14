@@ -9,8 +9,8 @@ import java.util.List;
 public class BookingService implements IBookingService{
 private IBookingRepository iBookingRepository = new BookingRepository();
     @Override
-    public List<Booking> fillAll() {
-        return iBookingRepository.fillAll();
+    public List<Booking> fillAll(String name) {
+        return iBookingRepository.fillAll(name);
     }
 
     @Override
@@ -29,7 +29,7 @@ private IBookingRepository iBookingRepository = new BookingRepository();
     }
 
     @Override
-    public void remove(int id) {
-        iBookingRepository.remove(id);
+    public void remove(Booking booking) {
+        iBookingRepository.remove(booking);
     }
 }
