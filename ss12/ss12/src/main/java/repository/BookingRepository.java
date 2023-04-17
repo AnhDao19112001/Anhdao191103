@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookingRepository implements IBookingRepository{
-    private static final String INSERT_BOOK_SQL = "";
-    private static final String FIND_BY_NAME = "";
     @Override
     public List<Booking> fillAll(String name) {
         List<Booking> bookingList = new ArrayList<>();
